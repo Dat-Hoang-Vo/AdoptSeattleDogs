@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
+//import DogProfile from "./DogProfile";
 
 const GetDogs = () => {
     const [dogs, setDogs] = useState([]);
@@ -14,16 +15,27 @@ const GetDogs = () => {
     }
 
     useEffect(() => {
-        getDogs();
-    }, []);
+        getDogs();      
+    }, []);   
 
-    console.log(dogs);
+    //console.log(dogs);
+    //console.log(dogs[0]);
+    if (!dogs[0]) {
+        return (
+            <div>
 
-    return (
-        <Fragment>
-            <h1>Dogs</h1>
-        </Fragment>
-    )
+            </div>
+        )
+    } else {
+        return (
+            <Fragment>
+                <h1>Dogs</h1>
+                <p>{dogs[0]['name']} {dogs[0]['cost']}</p>
+            </Fragment>
+        )
+    }
+
+    
 }
 
 export default GetDogs;
