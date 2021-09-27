@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-adoptseattledogs-dev-222018-authRole",
+            "UnauthRoleArn": "arn:aws:iam::000532052671:role/amplify-adoptseattledogs-dev-222018-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::000532052671:role/amplify-adoptseattledogs-dev-222018-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-adoptseattledogs-dev-222018-deployment",
+            "UnauthRoleName": "amplify-adoptseattledogs-dev-222018-unauthRole",
+            "StackName": "amplify-adoptseattledogs-dev-222018",
+            "StackId": "arn:aws:cloudformation:us-west-2:000532052671:stack/amplify-adoptseattledogs-dev-222018/9c176140-1f52-11ec-b1e2-023714a53687",
+            "AmplifyAppId": "dxhtku6a22d2u"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "dxhtku6a22d2u",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}
