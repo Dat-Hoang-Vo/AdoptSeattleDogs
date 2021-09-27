@@ -2,9 +2,9 @@ import '../css/DogProfile.css'
 
 const DogProfile = (props) => {
     return (
-        <div style={{width: '10vw', margin: '5vh 2vw 2vh 2vw', borderRadius: '1vw', backgroundColor: '#ffffff'}}>
+        <div style={{width: '14em', margin: '5vh 2vw 2vh 2vw', borderRadius: '1vw', backgroundColor: '#ffffff', display: "inline-block"}}>
             <a href={props.link}>
-                <img src={props.picture} style={{width: '10vw', objectFit: 'contain', borderTopLeftRadius: '1vw', borderTopRightRadius: '1vw'}} />
+                <img src={props.picture} style={{width: '14em', objectFit: 'contain', borderTopLeftRadius: '1vw', borderTopRightRadius: '1vw'}} />
             </a>
             <div style={{paddingBottom: '1vh'}}>
                 <p>{props.name}</p>
@@ -14,6 +14,7 @@ const DogProfile = (props) => {
                 <p>Gender: {props.gender}</p>
                 <p>Size: {props.size}</p>
                 <p>Cost: {props.cost}</p>
+                <p>{props.website}</p>
             </div>
         </div>
     )
