@@ -42,7 +42,7 @@ const DogProfile = (props) => {
 
     const handleCost = () => {
         if (props.cost === -1) {
-            setCost(<Typography variant="body2">Fee: Unknown</Typography>)
+            setCost(<Typography variant="body2">Fee: Not Listed</Typography>)
         } else {
             setCost(<Typography variant="body2">Fee: ${props.cost}</Typography>)
         }

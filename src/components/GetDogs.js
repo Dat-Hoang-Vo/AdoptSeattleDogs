@@ -35,6 +35,10 @@ const GetDogs = () => {
         setSortChoice(4);
     }
 
+    const handleBreedSort = () => {
+        setSortChoice(5)
+    }
+
     const handleAscendingOrder = () => {
         setOrderChoice('Ascending');
     }
@@ -55,6 +59,8 @@ const GetDogs = () => {
                 GetGenderAscending();
             } else if (sortChoice === 4) {
                 GetSizeAscending();
+            } else if (sortChoice === 5) {
+                GetBreedAscending();
             }
         } else {
             if (sortChoice === 0) {
@@ -67,6 +73,8 @@ const GetDogs = () => {
                 GetGenderDescending();
             } else if (sortChoice === 4) {
                 GetSizeDescending();
+            } else if (sortChoice === 5) {
+                GetBreedDescending();
             }
         }
         console.log(dogs);
@@ -93,6 +101,29 @@ const GetDogs = () => {
             console.error(error.message);
         }
     }
+
+    const GetBreedAscending = async() => {
+        try {
+            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/breed/asc");
+            const jsonData = await response.json();
+            setDogs(jsonData);
+            setRenderDogs(!renderDogs);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    const GetBreedDescending = async() => {
+        try {
+            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/breed/desc");
+            const jsonData = await response.json();
+            setDogs(jsonData);
+            setRenderDogs(!renderDogs);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
 
     const GetCostAscending = async() => {
         try {
@@ -195,14 +226,14 @@ const GetDogs = () => {
         setDogsCard(
             dogs.map((dog) => {
             return (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={2} style={{marginTop: '1vh'}}>
                     <DogProfile update={renderDogs} name={dog['name']} picture={dog['picture']} breed={dog['breed']} color={dog['color']} gender={dog['gender']} size={dog['size']} age={dog['age']} cost={dog['cost']} link={dog['link']} website={dog['website_name']} />
                 </Grid>
             )
         })) 
     }, [renderDogs])   
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -251,6 +282,7 @@ const GetDogs = () => {
                                     >
                                         <FormControlLabel value="name" control={<Radio />} label="name" onClick={handleNameSort} />
                                         <FormControlLabel value="age" control={<Radio />} label="age" onClick={handleAgeSort} />
+                                        <FormControlLabel value="breed" control={<Radio />} label="breed" onClick={handleBreedSort} />
                                         <FormControlLabel value="cost" control={<Radio />} label="cost" onClick={handleCostSort} />
                                         <FormControlLabel value="gender" control={<Radio />} label="gender" onClick={handleGenderSort} />
                                         <FormControlLabel value="size" control={<Radio />} label="size" onClick={handleSizeSort} />
