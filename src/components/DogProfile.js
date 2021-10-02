@@ -42,16 +42,16 @@ const DogProfile = (props) => {
 
     const handleCost = () => {
         if (props.cost === -1) {
-            setCost(<Typography variant="body2">Cost: Not Listed</Typography>)
+            setCost(<Typography variant="body2">Fee: Unknown</Typography>)
         } else {
-            setCost(<Typography variant="body2">Cost: ${props.cost}</Typography>)
+            setCost(<Typography variant="body2">Fee: ${props.cost}</Typography>)
         }
     }
 
     useEffect(() => {
         handleAge();
         handleCost();
-    }, [])
+    }, [props.update])
 
 
     return (

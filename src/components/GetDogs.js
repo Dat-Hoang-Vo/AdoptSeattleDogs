@@ -69,6 +69,7 @@ const GetDogs = () => {
                 GetSizeDescending();
             }
         }
+        console.log(dogs);
     }
 
     const GetAgeAscending = async() => {
@@ -102,6 +103,9 @@ const GetDogs = () => {
         } catch (error) {
             console.error(error.message);
         }
+        
+
+        
     }
 
     const GetCostDescending = async() => {
@@ -113,6 +117,8 @@ const GetDogs = () => {
         } catch (error) {
             console.error(error.message);
         }
+        
+
     }
 
     const GetGenderAscending = async() => {
@@ -190,7 +196,7 @@ const GetDogs = () => {
             dogs.map((dog) => {
             return (
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                    <DogProfile name={dog['name']} picture={dog['picture']} breed={dog['breed']} color={dog['color']} gender={dog['gender']} size={dog['size']} age={dog['age']} cost={dog['cost']} link={dog['link']} website={dog['website_name']} />
+                    <DogProfile update={renderDogs} name={dog['name']} picture={dog['picture']} breed={dog['breed']} color={dog['color']} gender={dog['gender']} size={dog['size']} age={dog['age']} cost={dog['cost']} link={dog['link']} website={dog['website_name']} />
                 </Grid>
             )
         })) 
