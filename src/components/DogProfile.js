@@ -1,5 +1,5 @@
 import '../css/DogProfile.css'
-
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
 
 const DogProfile = (props) => {
@@ -13,38 +13,26 @@ const DogProfile = (props) => {
 
 
     return (
-        <div>
-            <a href={props.link} onClick={updateTraffic} >
-                <img src={props.picture} style={{width: '14em', objectFit: 'contain', borderTopLeftRadius: '1vw', borderTopRightRadius: '1vw'}} />
-            </a>
-            <div style={{paddingBottom: '1vh'}}>
-                <p>{props.name}</p>
-                <p>{props.breed}</p>
-                <p>{props.color}</p>
-                <p>{Math.floor(props.age / 12)} years {props.age % 12} months</p>
-                <p>Gender: {props.gender}</p>
-                <p>Size: {props.size}</p>
-                <p>Cost: {props.cost}</p>
-                <p>{props.website}</p>
-            </div>
-            {/*
-        <div style={{width: '14em', margin: '5vh 2vw 2vh 2vw', borderRadius: '1vw', backgroundColor: '#ffffff', display: "inline-block"}}>
-            <a href={props.link} onClick={updateTraffic} >
-                <img src={props.picture} style={{width: '14em', objectFit: 'contain', borderTopLeftRadius: '1vw', borderTopRightRadius: '1vw'}} />
-            </a>
-            <div style={{paddingBottom: '1vh'}}>
-                <p>{props.name}</p>
-                <p>{props.breed}</p>
-                <p>{props.color}</p>
-                <p>{Math.floor(props.age / 12)} years {props.age % 12} months</p>
-                <p>Gender: {props.gender}</p>
-                <p>Size: {props.size}</p>
-                <p>Cost: {props.cost}</p>
-                <p>{props.website}</p>
-            </div>
-        </div>
-        */}
-        </div>
+        <Card style={{height: '100%', position: 'relative'}}>
+            <CardMedia
+                component="img"
+                image={props.picture}
+                alt="dog picture"
+            />
+            <CardContent>
+                <Typography variant="h5">{props.name}</Typography>
+                <Typography variant="body2">{props.breed}</Typography>
+                <Typography variant="body2">{props.color}</Typography>
+                <Typography variant="body2">{Math.floor(props.age / 12)} years {props.age % 12} months</Typography>
+                <Typography variant="body2">Gender: {props.gender}</Typography>
+                <Typography variant="body2">Size: {props.size}</Typography>
+                <Typography variant="body2">Cost: ${props.cost}</Typography>
+                <Typography variant="body2">{props.website}</Typography>
+            </CardContent>
+            <CardActions>
+                <Button href={props.link} style={{position: 'absolute', bottom: '0'}} onClick={updateTraffic} >Visit</Button>
+            </CardActions>
+        </Card> 
         
     )
 }

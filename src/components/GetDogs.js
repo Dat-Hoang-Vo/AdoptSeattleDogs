@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import DogProfile from "./DogProfile";
-import { FormControl, FormLabel, FormControlLabel, Radio, RadioButton, RadioGroup, Button, Grid } from "@mui/material";
+import { FormControl, FormLabel, FormControlLabel, Radio, RadioButton, RadioGroup, Button, Grid, Container, SwipeableDrawer, IconButton, Typography, AppBar, Toolbar } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box } from "@mui/system";
 
 const GetDogs = () => {
     const [dogs, setDogs] = useState([]);
@@ -187,12 +189,18 @@ const GetDogs = () => {
         setDogsCard(
             dogs.map((dog) => {
             return (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
                     <DogProfile name={dog['name']} picture={dog['picture']} breed={dog['breed']} color={dog['color']} gender={dog['gender']} size={dog['size']} age={dog['age']} cost={dog['cost']} link={dog['link']} website={dog['website_name']} />
                 </Grid>
             )
         })) 
     }, [renderDogs])   
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(!open);
+    }
 
     if (!dogs[0]) {
         return (
@@ -202,64 +210,72 @@ const GetDogs = () => {
         )
     } else {
         return (
-            <Grid container spacing={1}>
-
-            <Grid item xs={4} sm={3} md={2} lg={2} xl={2}>
-                <div style={{height: '96.4vh', backgroundColor: 'white', position: 'sticky', top: '3.6vh'}}>
-                <FormControl style={{marginLeft: '1vw'}}>
-
-                        <FormLabel component="legend">Sort by</FormLabel>
-                        <RadioGroup
-                            aria-label="Sort By"
-                            defaultValue="name"
-                            name="sort-by-radio-choices"
+            <Box>
+                <AppBar style={{zIndex: '1400', position: 'sticky', top: '0'}}>
+                    <Toolbar>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleOpen}
                             >
-                                <FormControlLabel value="name" control={<Radio />} label="name" onClick={handleNameSort} />
-                                <FormControlLabel value="age" control={<Radio />} label="age" onClick={handleAgeSort} />
-                                <FormControlLabel value="cost" control={<Radio />} label="cost" onClick={handleCostSort} />
-                                <FormControlLabel value="gender" control={<Radio />} label="gender" onClick={handleGenderSort} />
-                                <FormControlLabel value="size" control={<Radio />} label="size" onClick={handleSizeSort} />
-                        </RadioGroup>
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h4">AdoptSeattleDogs</Typography>
+                    </Toolbar>
+                </AppBar>
 
-                        <FormLabel component="legend">Order by</FormLabel>
-                        <RadioGroup
-                            aria-label="Order by"
-                            defaultValue="ascending"
-                            name="order-by-radio-choices"
-                            >
-                            <FormControlLabel value="ascending" control={<Radio />} label="ascending" onClick={handleAscendingOrder} />
-                            <FormControlLabel value="descending" control={<Radio />} label="descending" onClick={handleDescendingOrder} />
-                        </RadioGroup>
+                <Grid container>
+                    <Grid item xs={4} sm={3} md={2} lg={2} xl={1.6}>
+                    <SwipeableDrawer
+                        anchor="left"
+                        open={open}
+                        variant='persistent'
+                        onClose={() => {}}
+                        onOpen={() => {}}
+                    >
+                        <div style={{position: 'sticky', top: '5em', paddingLeft: '1vw', paddingRight: '2vw'}}>
+                            <FormControl>
 
-                        <Button variant="outlined" onClick={handleSubmit} >Sort</Button>
-                    </FormControl>
-                    
-                </div>
-            </Grid>
+                                <FormLabel component="legend">Sort by</FormLabel>
+                                <RadioGroup
+                                    aria-label="Sort By"
+                                    defaultValue="name"
+                                    name="sort-by-radio-choices"
+                                    >
+                                        <FormControlLabel value="name" control={<Radio />} label="name" onClick={handleNameSort} />
+                                        <FormControlLabel value="age" control={<Radio />} label="age" onClick={handleAgeSort} />
+                                        <FormControlLabel value="cost" control={<Radio />} label="cost" onClick={handleCostSort} />
+                                        <FormControlLabel value="gender" control={<Radio />} label="gender" onClick={handleGenderSort} />
+                                        <FormControlLabel value="size" control={<Radio />} label="size" onClick={handleSizeSort} />
+                                </RadioGroup>
 
-            <Grid item xs={8} sm={9} md={10} lg={10} xl={10} style={{justifyContent: 'center', marginLeft: 'auto'}}>
-                <Grid container spacing={1}>
-                    {dogsCard}
+                                <FormLabel component="legend">Order by</FormLabel>
+                                <RadioGroup
+                                    aria-label="Order by"
+                                    defaultValue="ascending"
+                                    name="order-by-radio-choices"
+                                    >
+                                    <FormControlLabel value="ascending" control={<Radio />} label="ascending" onClick={handleAscendingOrder} />
+                                    <FormControlLabel value="descending" control={<Radio />} label="descending" onClick={handleDescendingOrder} />
+                                </RadioGroup>
+
+                                <Button variant="outlined" onClick={handleSubmit} >Sort</Button>
+                            </FormControl>
+                        </div>
+                        
+                    </SwipeableDrawer>        
+                        
+                    </Grid>
+
+                    <Grid item xs={7.5} sm={8.6} md={9.7} lg={9.8} xl={9.8}>
+                        <Grid container spacing={8}>
+                            {dogsCard}      
+                        </Grid>
+                    </Grid>
+
                 </Grid>
-            </Grid>
-                
-                {/*
-                <div style={{maxWidth: '80vw', alignContent: 'center', marginLeft: 'auto'}}>
-                    {dogsCard}
-                </div>
-                */}
-
-                
-
-                {/*
-                <div style={{display: 'flex', maxWidth: '80vw', flexWrap: 'wrap', justifyContent: 'center'}}>
-                    {dogsCard}
-                </div>
-                */}
-                </Grid>
-
-                
-            
+            </Box>
         )
     }
 
