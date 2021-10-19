@@ -14,6 +14,8 @@ const DogProfile = (props) => {
 
     const [age, setAge] = useState();
 
+    const [gender, setGender] = useState();
+
     const handleAge = () => {
         let years = Math.floor(props.age / 12);
         let months = props.age % 12;
@@ -34,7 +36,7 @@ const DogProfile = (props) => {
             } else if (months > 1) {
                 monthText = <span>{months} months</span>
             }
-            setAge(<Typography variant="body2">{yearText} {monthText}</Typography>)
+            setAge(<Typography variant="body2" style={{display: 'inline'}}>{yearText} {monthText} old</Typography>)
         }
     }
 
@@ -48,10 +50,21 @@ const DogProfile = (props) => {
         }
     }
 
+    const handleGender = () => {
+        let pgender = props.gender;
+        if (pgender === "m" || pgender === "M") {
+            setGender("Male");
+        } else if (pgender === "f" || pgender === "F") {
+            setGender("Female");
+        } else {
+            setGender("Unknown");
+        }
+    }
+
     useEffect(() => {
         handleAge();
         handleCost();
-        console.log("update");
+        handleGender();
     }, [props.update])
 
 
@@ -65,13 +78,12 @@ const DogProfile = (props) => {
             />
             <CardContent>
                 <Typography variant="h5">{props.name}</Typography>
-                <Typography variant="body2">{props.breed}</Typography>
-                <Typography variant="body2">{props.color}</Typography>
+                <Typography variant="body2">{props.color}, {props.breed}</Typography>
                 {age}
-                <Typography variant="body2">Gender: {props.gender}</Typography>
+                <Typography variant="body2" style={{display: 'inline'}}>, {gender}</Typography>
                 <Typography variant="body2">Size: {props.size}</Typography>
                 {cost}
-                <Typography variant="body2">{props.website}</Typography>
+                
             </CardContent>
             <CardActions>
                 <Button href={props.link} style={{position: 'absolute', bottom: '0'}} onClick={updateTraffic} >Visit</Button>

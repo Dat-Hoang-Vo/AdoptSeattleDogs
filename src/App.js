@@ -1,16 +1,14 @@
-import { AppBar } from "@mui/material";
-
 import "./App.css";
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import GetDogs from "./components/GetDogs";
 import Home from "./components/Home";
+import DogPage from "./components/DogPage";
 
 function App() {
   document.body.style.margin = '0';
@@ -19,6 +17,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/dogs">
+          <DogPage />
         </Route>
         <Route exact path="/test">
           <GetDogs />
