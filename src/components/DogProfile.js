@@ -51,6 +51,7 @@ const DogProfile = (props) => {
     useEffect(() => {
         handleAge();
         handleCost();
+        console.log("update");
     }, [props.update])
 
 
@@ -60,6 +61,7 @@ const DogProfile = (props) => {
                 component="img"
                 image={props.picture}
                 alt="dog picture"
+                style={{width: '100%', height: '22vh', objectFit: 'cover'}}
             />
             <CardContent>
                 <Typography variant="h5">{props.name}</Typography>

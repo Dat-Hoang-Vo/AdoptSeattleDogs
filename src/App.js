@@ -1,13 +1,30 @@
 import { AppBar } from "@mui/material";
+
+import "./App.css";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import GetDogs from "./components/GetDogs";
+import Home from "./components/Home";
 
 function App() {
   document.body.style.margin = '0';
   return (
-    <div className="App"  style={{backgroundColor: '#D3D3D3', padding: '0', margin: '0'}}>
-      
-      <GetDogs />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/test">
+          <GetDogs />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

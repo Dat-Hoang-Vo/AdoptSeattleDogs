@@ -242,7 +242,7 @@ const GetDogs = () => {
     if (!dogs[0]) {
         return (
             <div>
-                <h1>Loading...</h1>
+                <h1 style={{backgroundColor: 'white'}}>Loading...</h1>
             </div>
         )
     } else {
