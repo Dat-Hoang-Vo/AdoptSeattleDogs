@@ -60,7 +60,7 @@ const Home = () => {
             </div>
 
             <div style={{height: '12vh'}}>
-            <a href="#FAQs" style={{textDecoration: "none", color: "#8b6bff"}}>
+            <a style={{textDecoration: "none", color: "#8b6bff"}}>
             <Box style={{paddingLeft: '1vw'}}>
                 <Typography variant="h1" style={{display: 'inline'}} id="FAQs">FAQs</Typography>
                 <ArrowDownwardRoundedIcon style={{fontSize: '3vw', paddingLeft: '1vw'}} />
