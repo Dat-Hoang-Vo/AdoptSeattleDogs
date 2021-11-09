@@ -2,6 +2,7 @@ import "./App.css";
 
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -12,16 +13,16 @@ import DogPage from "./components/DogPage";
 function App() {
   document.body.style.margin = '0';
   return (
-    <Router>
+    <HashRouter>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/dogs">
+        <Route exact path="/dogs">
           <DogPage />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
