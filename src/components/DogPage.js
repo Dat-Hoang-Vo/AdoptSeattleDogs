@@ -17,140 +17,6 @@ const DogPage = () => {
 
     const [fetchDogs, setFetchDogs] = useState(false);
 
-    const GetAgeAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/age/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetAgeDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/age/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetBreedAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/breed/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetBreedDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/breed/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetCostAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/cost/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetCostDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/cost/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-        
-
-    }
-
-    const GetGenderAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/gender/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetGenderDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/gender/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetNameAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/name/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetNameDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/name/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetSizeAscending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/size/asc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const GetSizeDescending = async() => {
-        try {
-            const response = await fetch("https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/get/dogs/size/desc");
-            const jsonData = await response.json();
-            setDogs(jsonData);
-            setFetchDogs(!fetchDogs);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
     const [sort, setSort] = useState("age");
 
     const handleAge = () => {
@@ -191,17 +57,17 @@ const DogPage = () => {
 
     const handleAscending = () => {
         if (order === "ascending") { return; }
-        setOrder("ascending");
+        setOrder("asc");
     }
 
     const handleDescending = () => {
         if (order === "descending") { return; }
-        setOrder("descending");
+        setOrder("desc");
     }
 
     const [updateDogs, setUpdateDogs] = useState(false);
 
-    const [order, setOrder] = useState("ascending");
+    const [order, setOrder] = useState("asc");
 
     const [dogPages, setDogPages] = useState([]);
 
@@ -211,37 +77,20 @@ const DogPage = () => {
 
     const [finishedLoading, setFinishedLoading] = useState(false);
 
+    const GetDogs = async() => {
+        try {
+            const response = await fetch(`https://u7sz06bt0e.execute-api.us-east-1.amazonaws.com/dev/api/get/${sort}/${order}`);
+            const jsonData = await response.json();
+            setDogs(jsonData);
+            setFetchDogs(!fetchDogs);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     // Fetch initial data
     useEffect(() => {
-        if (order === "ascending") {
-            if (sort === "age") {
-                GetAgeAscending();
-            } else if (sort === "cost") {
-                GetCostAscending();
-            } else if (sort === "breed") {
-                GetBreedAscending();
-            } else if (sort === "name") {
-                GetNameAscending();
-            } else if (sort === "size") {
-                GetSizeAscending();
-            } else if (sort === "gender") {
-                GetGenderAscending();
-            }
-        } else if (order === "descending") {
-            if (sort === "age") {
-                GetAgeDescending();
-            } else if (sort === "cost") {
-                GetCostDescending();
-            } else if (sort === "breed") {
-                GetBreedDescending();
-            } else if (sort === "name") {
-                GetNameDescending();
-            } else if (sort === "size") {
-                GetSizeDescending();
-            } else if (sort === "gender") {
-                GetGenderDescending();
-            }
-        }
+        GetDogs();
     }, [sort, order])
 
     useEffect(() => {
