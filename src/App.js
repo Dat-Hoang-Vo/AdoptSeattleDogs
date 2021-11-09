@@ -6,7 +6,6 @@ import {
   Route
 } from "react-router-dom";
 
-import GetDogs from "./components/GetDogs";
 import Home from "./components/Home";
 import DogPage from "./components/DogPage";
 
@@ -18,11 +17,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/dogs">
+        <Route path="/dogs">
           <DogPage />
-        </Route>
-        <Route exact path="/test">
-          <GetDogs />
         </Route>
       </Switch>
     </Router>
