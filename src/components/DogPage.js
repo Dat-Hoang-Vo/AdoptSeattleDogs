@@ -213,7 +213,7 @@ const DogPage = () => {
         </div>
     )
     } else {
-        return (<div style={{height: '100vh', backgroundColor: '#fff5eb'}}></div>)
+        return (<div style={{height: '100vh', backgroundColor: '#e5e5e5'}}></div>)
     }
 }
 

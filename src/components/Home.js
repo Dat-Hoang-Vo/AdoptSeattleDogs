@@ -65,18 +65,18 @@ const Home = () => {
                     <Grid item xl={9}>
                         <Container style={{textAlign: 'center'}}>
                             <span>
-                            <Slide direction="up" in={showDog1} timeout={{enter: 800}}>
+                            <Slide direction="left" in={showDog1} timeout={{enter: 800}}>
                                 <img src={dog1} style={{width: '15vw', marginRight: '2vw', borderRadius: '2vh'}} />
                             </Slide>
                             </span>
 
                             <span>
-                            <Slide direction="up" in={showDog2} timeout={{enter: 800}}>
+                            <Slide direction="left" in={showDog2} timeout={{enter: 800}}>
                                 <img src={dog2} style={{width: '15vw', borderRadius: '2vh'}} />
                             </Slide>
                             </span>
 
-                            <Slide direction="up" in={showDog3} timeout={{enter: 800}}>
+                            <Slide direction="left" in={showDog3} timeout={{enter: 800}}>
                                 <img src={dog3} style={{width: '15vw', marginLeft: '2vw', borderRadius: '2vh'}} />
                             </Slide>
                         </Container>
