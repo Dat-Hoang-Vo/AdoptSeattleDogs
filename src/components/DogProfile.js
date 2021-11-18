@@ -69,7 +69,8 @@ const DogProfile = (props) => {
 
 
     return (
-        <Card style={{height: '100%', position: 'relative'}}>
+        <a href={props.link} style={{textDecoration: 'none'}} onClick={updateTraffic}>
+        <Card style={{height: '100%', position: 'relative', borderRadius: '1vw'}}>
             <CardMedia
                 component="img"
                 image={props.picture}
@@ -81,14 +82,17 @@ const DogProfile = (props) => {
                 <Typography variant="body2">{props.color}, {props.breed}</Typography>
                 {age}
                 <Typography variant="body2" style={{display: 'inline'}}>, {gender}</Typography>
-                <Typography variant="body2">Size: {props.size}</Typography>
-                {cost}
+
+                <div>
+                    <Typography variant="body2" sx={{float: 'left'}}>Size: {props.size}</Typography>
+                    <span style={{float: 'right'}}>
+                        {cost}
+                    </span>
+                </div>
                 
             </CardContent>
-            <CardActions>
-                <Button href={props.link} style={{position: 'absolute', bottom: '0'}} onClick={updateTraffic} >Visit</Button>
-            </CardActions>
-        </Card> 
+        </Card>
+        </a>
         
     )
 }

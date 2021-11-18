@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, Container, FormControlLabel, ImageList, Pagination, Slide, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Button, Container, FormControlLabel, ImageList, Pagination, Slide, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
 
@@ -7,6 +7,9 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import dog1 from "../img/dog1compressed.jpg";
 import dog2 from "../img/dog2compressed.jpg";
 import dog3 from "../img/dog4compressed.jpg";
+
+import runningdog from "../img/runningdog.png";
+import quote from "../img/quote.png";
 
 import { Radio, RadioGroup } from "@mui/material";
 
@@ -27,6 +30,71 @@ const Home = () => {
     const [showDog2, setShowDog2] = useState(false);
     const [showDog3, setShowDog3] = useState(false);
 
+    return(
+        <div style={{height: '99.9vh', width: '99.9vw', backgroundColor: '#e5e5e5'}} onLoad={loadDogs}>
+            <div style={{height: '60vh', paddingTop: '10vh', paddingLeft: '5vw'}}>
+                <Grid container>
+                    <Grid item xl={2}>
+                        <Stack spacing={2}>
+                            <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#204e4a' }}>
+                                <Typography variant="h3">
+                                    HOME
+                                </Typography>
+                            </Link>
+
+                            <Link to={{pathname: '/dogs'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                                <Typography variant="h3">
+                                    DOGS
+                                </Typography>
+                            </Link>
+
+                            <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                                <Typography variant="h3">
+                                    CHARITY
+                                </Typography>
+                            </Link>
+
+                            <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                                <Typography variant="h3">
+                                    FAQ
+                                </Typography>
+                            </Link>
+                        </Stack>
+                    </Grid>
+
+                    <Grid item xl={9}>
+                        <Container style={{textAlign: 'center'}}>
+                            <span>
+                            <Slide direction="up" in={showDog1} timeout={{enter: 800}}>
+                                <img src={dog1} style={{width: '15vw', marginRight: '2vw', borderRadius: '2vh'}} />
+                            </Slide>
+                            </span>
+
+                            <span>
+                            <Slide direction="up" in={showDog2} timeout={{enter: 800}}>
+                                <img src={dog2} style={{width: '15vw', borderRadius: '2vh'}} />
+                            </Slide>
+                            </span>
+
+                            <Slide direction="up" in={showDog3} timeout={{enter: 800}}>
+                                <img src={dog3} style={{width: '15vw', marginLeft: '2vw', borderRadius: '2vh'}} />
+                            </Slide>
+                        </Container>
+                    </Grid>
+                </Grid>
+                <Grid container sx={{paddingTop: '5vh'}}>
+                    <Grid item xl={7}>
+                    <img src={quote} style={{width: '45vw'}} />
+                    </Grid>
+                    <Grid item xl={5}>
+                        <img src={runningdog} style={{width: '20vw'}} />
+                    </Grid>
+                </Grid>
+            </div>
+        </div>
+    )
+
+    /*
     return(
         <div style={{height: '100%', backgroundColor: '#fff5eb'}} onLoad={loadDogs}>
             <div style={{height: '88vh'}}>
@@ -121,6 +189,7 @@ const Home = () => {
             </Box>
         </div>
     )
+    */
 }
 
 export default Home;

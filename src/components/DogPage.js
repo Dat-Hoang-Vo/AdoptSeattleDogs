@@ -1,4 +1,4 @@
-import { Container, FormControlLabel, Pagination, Typography } from "@mui/material";
+import { Container, FormControlLabel, Pagination, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState, useEffect } from "react";
 
@@ -9,6 +9,9 @@ import { Grid } from "@mui/material";
 import DogProfile from "./DogProfile";
 
 import homeIcon from "../img/icon.png";
+
+import runningdog from "../img/runningdog.png"
+import { Link } from "react-router-dom";
 
 
 const DogPage = () => {
@@ -145,25 +148,52 @@ const DogPage = () => {
 
     if (dogs[0]) {
     return (
-        <div style={{height: '100vh', backgroundColor: '#fff5eb'}}>
+        <div style={{height: '100vh', backgroundColor: '#e5e5e5'}}>
+
+            <Stack spacing={2} direction="row" sx={{paddingBottom: '1vh', paddingTop: '2vh'}} justifyContent="center">
+                    <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                        <Typography variant="h4">
+                            HOME
+                        </Typography>
+                    </Link>
+
+                    <Link to={{pathname: '/dogs'}} style={{textDecoration: 'none', color: '#204e4a'}}>
+                        <Typography variant="h4">
+                            DOGS
+                        </Typography>
+                    </Link>
+
+                    <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                        <Typography variant="h4">
+                            CHARITY
+                        </Typography>
+                    </Link>
+
+                    <Link to={{pathname: '/'}} style={{textDecoration: 'none', color: '#393d3f'}}>
+                        <Typography variant="h4">
+                            FAQ
+                        </Typography>
+                    </Link>
+            </Stack>
+
             <Grid container style={{paddingTop: '2vh'}}>
                 
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={1.5}>
-                    <img src={homeIcon} />
-                    <Box style={{marginLeft: '1vw'}}>
-                        <Typography>Sort</Typography>
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={1.5} style={{paddingLeft: '2vw'}}>
+                    <img src={runningdog} style={{width: '6vw'}} />
+                    <Box>
+                        <Typography variant="h4" sx={{color: '#393d3f'}}>Sort</Typography>
                         <RadioGroup defaultValue="age">
-                            <FormControlLabel value="age" control={<Radio />} label="age" onClick={handleAge}  />
-                            <FormControlLabel value="cost" control={<Radio />} label="cost" onClick={handleCost} />
-                            <FormControlLabel value="name" control={<Radio />} label="name" onClick={handleName}  />
-                            <FormControlLabel value="breed" control={<Radio />} label="breed" onClick={handleBreed}  />
-                            <FormControlLabel value="size" control={<Radio />} label="size" onClick={handleSize}  />
-                            <FormControlLabel value="gender" control={<Radio />} label="gender" onClick={handleGender}  />
+                            <FormControlLabel value="age" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Age</Typography>} onClick={handleAge} />
+                            <FormControlLabel value="cost" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Cost</Typography>} onClick={handleCost} />
+                            <FormControlLabel value="name" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Name</Typography>} onClick={handleName}  />
+                            <FormControlLabel value="breed" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Breed</Typography>} onClick={handleBreed}  />
+                            <FormControlLabel value="size" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Size</Typography>} onClick={handleSize}  />
+                            <FormControlLabel value="gender" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Gender</Typography>} onClick={handleGender}  />
                         </RadioGroup>
-                        <Typography>Order</Typography>
+                        <Typography variant="h4" sx={{color: '#393d3f', paddingTop: '2vh'}}>Order</Typography>
                         <RadioGroup defaultValue="ascending">
-                            <FormControlLabel value="ascending" control={<Radio />} label="ascending" onClick={handleAscending} />
-                            <FormControlLabel value="descending" control={<Radio />} label="descending" onClick={handleDescending} />
+                            <FormControlLabel value="ascending" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Ascending</Typography>} onClick={handleAscending} />
+                            <FormControlLabel value="descending" control={<Radio />} label={<Typography sx={{fontSize: '1.4vw', color: '#393d3f'}}>Descending</Typography>} onClick={handleDescending} />
                         </RadioGroup>
                     </Box>
                 </Grid>
@@ -175,7 +205,7 @@ const DogPage = () => {
                         </Grid>
                     </Container>
                     <Container style={{marginTop: '1vh'}}>
-                        <Pagination size="large" page={page + 1} count={dogPages.length} variant="outlined" onChange={handlePageChange} id="pagination" />
+                        <Pagination size="large" page={page + 1} count={dogPages.length} variant="outlined" onChange={handlePageChange} id="pagination" sx={{paddingLeft: '18vw'}} />
                     </Container>
                 </Grid>
 
